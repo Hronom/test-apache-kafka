@@ -12,7 +12,7 @@ import java.util.Properties;
  * Hello world!
  */
 public class TestApacheKafkaConsumerApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "DemoConsumer");
@@ -24,10 +24,15 @@ public class TestApacheKafkaConsumerApp {
 
         KafkaConsumer<Integer, String> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Collections.singletonList("mytopic"));
-        ConsumerRecords<Integer, String> records = consumer.poll(1000);
-        for (ConsumerRecord<Integer, String> record : records) {
-            System.out.println("Received message: (" + record.key() + ", " + record.value() + ") at offset " + record.offset());
+        while(true) {
+            ConsumerRecords<Integer, String> records = consumer.poll(1);
+            for (ConsumerRecord<Integer, String> record : records) {
+                System.out.println(
+                    "Received message: (" + record.key() + ", " + record.value() + ") at offset " +
+                    record.offset());
+            }
+            //Thread.currentThread().sleep(1000);
         }
-        consumer.close();
+        //consumer.close();
     }
 }

@@ -6,6 +6,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 public class TestApacheKafkaProducerApp {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -16,16 +17,23 @@ public class TestApacheKafkaProducerApp {
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         KafkaProducer<Integer, String> producer = new KafkaProducer<>(props);
 
-        boolean sync = false;
-        String topic = "mytopic";
-        Integer key = 13;
-        String value = "myvalue";
-        ProducerRecord<Integer, String> producerRecord = new ProducerRecord<>(topic, key, value);
-        if (sync) {
-            producer.send(producerRecord).get();
-        } else {
-            producer.send(producerRecord);
+        final boolean sync = false;
+
+        int messageNo = 1;
+        while (true) {
+            String topic = "mytopic";
+            Integer key = messageNo;
+            String value = "myvalue";
+            ProducerRecord<Integer, String> producerRecord = new ProducerRecord<>(topic, key, value);
+            if (sync) {
+                producer.send(producerRecord).get();
+            } else {
+                producer.send(producerRecord);
+            }
+            System.out.println("Sent message: (" + key + ", " + value + ")");
+            messageNo++;
+            Thread.sleep(TimeUnit.SECONDS.toMillis(1));
         }
-        producer.close();
+        //producer.close();
     }
 }
