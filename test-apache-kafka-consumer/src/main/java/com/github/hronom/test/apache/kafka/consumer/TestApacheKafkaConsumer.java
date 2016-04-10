@@ -29,15 +29,15 @@ public class TestApacheKafkaConsumer {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArrayDeserializer");
 
         try (KafkaConsumer<byte[], byte[]> consumer = new KafkaConsumer<>(props)) {
-            consumer.subscribe(Collections.singletonList("test_topic"));
+            consumer.subscribe(Collections.singletonList("test_topic1"));
             while (true) {
                 ConsumerRecords<byte[], byte[]> records = consumer.poll(1);
                 for (ConsumerRecord<byte[], byte[]> record : records) {
                     String key = (String) SerializationUtils.deserialize(record.key());
                     TextPojo textPojo = (TextPojo) SerializationUtils.deserialize(record.value());
-                    logger
+                    /*logger
                         .info("Received message: (" + key + ", " + textPojo.text + ") at offset " +
-                              record.offset());
+                              record.offset());*/
                 }
             }
         }

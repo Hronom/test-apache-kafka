@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class TestApacheKafkaProducer {
     private static final Logger logger = LogManager.getLogger();
 
-    private static final String topic = "test_topic";
+    private static final String topic = "test_topic1";
     private static final String stringPattern
         = "Ccn!CCccCn!cccccccCn!!Ccccc!cc!ccccc!cccc!!Cc!C!C!Ccn!CCccCn!cccccccCn!!Ccccc!cc!ccccc!cccc!!Cc!C!C!Ccn!CCccCn!cccccccCn!!Ccccc!cc!ccccc!cccc!!Cc!C!C!Ccn!CCccCn!cccccccCn!!Ccccc!cc!ccccc!cccc!!Cc!C!C!Ccn!CCccCn!cccccccCn!!Ccccc!cc!ccccc!cccc!!Cc!C!C!Ccn!CCccCn!cccccccCn!!Ccccc!cc!ccccc!cccc!!Cc!C!C!";
     private static final RandomStringGenerator generator = new RandomStringGenerator();
