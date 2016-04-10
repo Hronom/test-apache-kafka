@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class ConsumerController {
     private static final Logger logger = LogManager.getLogger();
-    private final String queueName = "test_queue";
+    private final String queueName = "test_topic";
 
     @KafkaListener(id = "foo", topics = queueName)
     public void processQueue(String message) {
