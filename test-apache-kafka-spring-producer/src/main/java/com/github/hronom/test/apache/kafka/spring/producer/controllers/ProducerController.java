@@ -17,16 +17,17 @@ public class ProducerController {
     private final RandomStringGenerator generator = new RandomStringGenerator();
     private final String queueName = "test_queue";
 
+    private int messageNo = 0;
+
     @Autowired
-    private KafkaTemplate<String, String> template;
+    private KafkaTemplate<Integer, String> kafkaTemplate;
 
     @Scheduled(fixedDelay = 5000)
     public void doSomething() {
         logger.info("Generate random string...");
         String msg = generator.generateFromPattern(stringPattern);
         logger.info("Emit to \"" + queueName + "\" message: \"" + msg + "\"");
-        Object obj = template.send(queueName, 0, "key", msg);
-        String resultStr = (String) obj;
-        logger.info("Receive: \"" + resultStr + "\"");
+        kafkaTemplate.send(queueName, 0, messageNo, msg);
+        messageNo++;
     }
 }
