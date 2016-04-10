@@ -1,11 +1,11 @@
-package com.github.hronom.test.rabbitmq.spring.producer.controllers;
+package com.github.hronom.test.apache.kafka.spring.producer.controllers;
 
 import net.moznion.random.string.RandomStringGenerator;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 
@@ -18,14 +18,14 @@ public class ProducerController {
     private final String queueName = "test_queue";
 
     @Autowired
-    private AmqpTemplate template;
+    private KafkaTemplate<String, String> template;
 
     @Scheduled(fixedDelay = 5000)
     public void doSomething() {
         logger.info("Generate random string...");
         String msg = generator.generateFromPattern(stringPattern);
         logger.info("Emit to \"" + queueName + "\" message: \"" + msg + "\"");
-        Object obj = template.convertSendAndReceive(queueName, msg);
+        Object obj = template.send(queueName, 0, "key", msg);
         String resultStr = (String) obj;
         logger.info("Receive: \"" + resultStr + "\"");
     }

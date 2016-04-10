@@ -1,4 +1,4 @@
-package com.github.hronom.test.rabbitmq.spring.producer.configs;
+package com.github.hronom.test.apache.kafka.spring.producer.configs;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
