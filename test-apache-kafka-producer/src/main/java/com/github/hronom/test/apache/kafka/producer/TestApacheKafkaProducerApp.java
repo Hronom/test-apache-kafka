@@ -21,9 +21,9 @@ public class TestApacheKafkaProducerApp {
 
         int messageNo = 1;
         while (true) {
-            String topic = "mytopic";
+            String topic = "test_topic";
             Integer key = messageNo;
-            String value = "myvalue";
+            String value = "test_value";
             ProducerRecord<Integer, String> producerRecord = new ProducerRecord<>(topic, key, value);
             if (sync) {
                 producer.send(producerRecord).get();

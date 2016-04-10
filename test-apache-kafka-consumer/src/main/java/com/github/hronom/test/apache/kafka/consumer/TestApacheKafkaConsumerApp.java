@@ -23,7 +23,7 @@ public class TestApacheKafkaConsumerApp {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
 
         KafkaConsumer<Integer, String> consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(Collections.singletonList("mytopic"));
+        consumer.subscribe(Collections.singletonList("test_topic"));
         while(true) {
             ConsumerRecords<Integer, String> records = consumer.poll(1);
             for (ConsumerRecord<Integer, String> record : records) {

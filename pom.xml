@@ -10,6 +10,8 @@
         <module>test-apache-kafka-embedded-broker</module>
         <module>test-apache-kafka-consumer</module>
         <module>test-apache-kafka-producer</module>
+        <module>test-apache-kafka-spring-consumer</module>
+        <module>test-apache-kafka-spring-producer</module>
     </modules>
     <packaging>pom</packaging>
 
