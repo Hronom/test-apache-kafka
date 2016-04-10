@@ -7,6 +7,7 @@
     <artifactId>test-apache-kafka</artifactId>
     <version>1.0.0</version>
     <modules>
+        <module>test-apache-kafka-common</module>
         <module>test-apache-kafka-embedded-broker</module>
         <module>test-apache-kafka-consumer</module>
         <module>test-apache-kafka-producer</module>
