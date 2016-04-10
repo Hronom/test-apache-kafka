@@ -19,6 +19,17 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.hronom</groupId>
+            <artifactId>test-apache-kafka-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- Random-string -->
+        <dependency>
+            <groupId>net.moznion</groupId>
+            <artifactId>random-string</artifactId>
+            <version>1.1.0</version>
+        </dependency>
         <!-- Kafka -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -73,7 +84,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib</classpathPrefix>
                             <classpathLayoutType>simple</classpathLayoutType>
-                            <mainClass>com.github.hronom.test.apache.kafka.producer.TestApacheKafkaProducerApp</mainClass>
+                            <mainClass>com.github.hronom.test.apache.kafka.producer.TestApacheKafkaProducer</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Version>${project.version}</Version>

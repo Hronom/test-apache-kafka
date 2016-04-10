@@ -19,6 +19,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.hronom</groupId>
+            <artifactId>test-apache-kafka-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <!-- Kafka -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -73,7 +78,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib</classpathPrefix>
                             <classpathLayoutType>simple</classpathLayoutType>
-                            <mainClass>com.github.hronom.test.apache.kafka.consumer.TestApacheKafkaConsumerApp</mainClass>
+                            <mainClass>com.github.hronom.test.apache.kafka.consumer.TestApacheKafkaConsumer</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Version>${project.version}</Version>

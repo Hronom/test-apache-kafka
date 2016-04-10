@@ -1,7 +1,7 @@
 package com.github.hronom.test.apache.kafka.spring.producer;
 
-import com.github.hronom.test.apache.kafka.spring.producer.configs.AppConfig;
 import com.github.hronom.test.apache.kafka.spring.producer.configs.ApacheKafkaProducerConfiguration;
+import com.github.hronom.test.apache.kafka.spring.producer.configs.AppConfig;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
